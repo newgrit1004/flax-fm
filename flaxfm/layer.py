@@ -3,6 +3,7 @@ import numpy as np
 import jax
 import jax.numpy as jnp
 from flaxfm.utils import slicing
+from typing import Sequence
 
 class FeaturesLinearFlax(nn.Module):
     field_dims : np.ndarray
@@ -64,3 +65,21 @@ class FieldAwareFactorizationMachineFlax(nn.Module):
                 ix.append(slicing(xs[j],i,1) * slicing(xs[i],j,1))
         ix = jnp.stack(ix, axis=1)
         return jnp.array(ix)
+
+
+class MultiLayerPerceptronFlax(nn.Module):
+    embed_dims : Sequence[int]
+    dropout : float
+
+    @nn.compact
+    def __call__(self, x, training:bool=True, output_layer=True):
+        for embed_dim in self.embed_dims:
+            x = nn.Dense(embed_dim)(x)
+            x = nn.relu(x)
+            x = nn.BatchNorm(use_running_average=not training)(x)
+            x = nn.Dropout(rate=self.dropout, deterministic=not training)(x)
+
+        if output_layer:
+            x = nn.Dense(1)(x)
+
+        return x
