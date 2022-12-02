@@ -5,10 +5,10 @@ import numpy as np
 
 class FactorizationMachineModelFlax(nn.Module):
     field_dims : np.ndarray
-    embed_dims : int
+    embed_dim : int
 
     def setup(self):
-        self.embedding = FeaturesEmbeddingFlax(self.field_dims, self.embed_dims)
+        self.embedding = FeaturesEmbeddingFlax(self.field_dims, self.embed_dim)
         self.linear = FeaturesLinearFlax(self.field_dims)
         self.fm = FactorizationMachineFlax(reduce_sum=True)
     @nn.compact
