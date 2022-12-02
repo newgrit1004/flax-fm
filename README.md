@@ -1,2 +1,26 @@
-# flax-fm
-Factorization Machine models in Flax
+# Factorization Machine models in Flax
+
+This repository provides a Flax implementation of factorization machine models and common datasets in CTR prediction.
+The code on this repository was converted from [a pytorch implementation of factorization machine models](https://github.com/rixwew/pytorch-fm) to a flax implementation code.
+
+
+## Available Datasets
+
+* [MovieLens Dataset](https://grouplens.org/datasets/movielens)
+
+
+## Available Models
+
+| Model | Reference |
+|-------|-----------|
+| Logistic Regression | |
+| Factorization Machine | [S Rendle, Factorization Machines, 2010.](https://www.csie.ntu.edu.tw/~b97053/paper/Rendle2010FM.pdf) |
+| Field-aware Factorization Machine | [Y Juan, et al. Field-aware Factorization Machines for CTR Prediction, 2015.](https://www.csie.ntu.edu.tw/~cjlin/papers/ffm.pdf) |
+
+
+# Reference Code
+https://github.com/rixwew/pytorch-fm
+
+## Licence
+
+MIT
