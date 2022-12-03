@@ -83,3 +83,28 @@ class MultiLayerPerceptronFlax(nn.Module):
             x = nn.Dense(1)(x)
 
         return x
+
+class AttentionalFactorizationMachineFlax(nn.Module):
+    attn_size : int
+    dropout : float = 0.2
+
+    def setup(self):
+        self.attention = nn.Dense(self.attn_size)
+        self.projection = nn.Dense(1)
+        self.fc = nn.Dense(1)
+
+    @nn.compact
+    def __call__(self, x, training:bool=True):
+        num_fields = x.shape[1]
+        row, col = [], []
+        for i in range(num_fields -1):
+            for j in range(i+1, num_fields):
+                row.append(i), col.append(j)
+        p, q = jnp.expand_dims(slicing(x, row[0], 1), axis=1), jnp.expand_dims(slicing(x, col[0], 1), axis=1)
+        inner_product = p*q
+        attn_scores = nn.relu(self.attention(inner_product))
+        attn_scores = nn.softmax(self.projection(attn_scores), axis=1)
+        attn_scores = nn.Dropout(rate=self.dropout, deterministic=not training)(attn_scores)
+        attn_output = np.sum(attn_scores * inner_product, axis=1)
+        attn_output = nn.Dropout(rate=self.dropout, deterministic=not training)(attn_output)
+        return self.fc(attn_output)
