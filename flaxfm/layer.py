@@ -1,9 +1,10 @@
 from flax import linen as nn
+from jax import lax
 import numpy as np
 import jax
 import jax.numpy as jnp
 from flaxfm.utils import slicing
-from typing import Sequence
+from typing import Sequence, Any
 
 class FeaturesLinearFlax(nn.Module):
     field_dims : np.ndarray
@@ -108,3 +109,68 @@ class AttentionalFactorizationMachineFlax(nn.Module):
         attn_output = np.sum(attn_scores * inner_product, axis=1)
         attn_output = nn.Dropout(rate=self.dropout, deterministic=not training)(attn_output)
         return self.fc(attn_output)
+
+
+
+class CompressedInteractionNetworkFlax(nn.Module):
+    """
+    #TODO(23/01/07): this network is working well, but not the same to original code.(https://github.com/rixwew/pytorch-fm/blob/master/torchfm/model/xdfm.py)
+                    The shape of output of conv_layers are different from the original code.
+                    Fix the code when I know how to make linen.Conv layer as torch.nn.Conv1d layer.
+    """
+    input_dim : int
+    cross_layer_sizes : Sequence[int]
+    split_half : bool
+
+    def setup(self):
+        self.num_layers = len(self.cross_layer_sizes)
+        self.fc = nn.Dense(1)
+
+    @nn.compact
+    def __call__(self, x):
+        prev_dim, fc_input_dim = self.input_dim, 0
+        conv_layers = list()
+        for i in range(self.num_layers):
+            cross_layer_size = self.cross_layer_sizes[i]
+            conv_layers.append(nn.Conv(cross_layer_size, kernel_size=(1,), strides=1))
+            if self.split_half and i != self.num_layers-1:
+                cross_layer_size //= 2
+            prev_dim = cross_layer_size
+            fc_input_dim += prev_dim
+
+
+        xs = list()
+        x0, h = jnp.expand_dims(x, axis=2), x
+        for i in range(self.num_layers):
+            x = x0 * jnp.expand_dims(h, axis=1)
+            batch_size, f0_dim, fin_dim, embed_dim = x.shape
+            x = x.reshape(batch_size, f0_dim*fin_dim, embed_dim)
+            x = nn.relu(conv_layers[i](x))
+            if self.split_half and i != self.num_layers - 1:
+                x, h = torch.split(x, x.shape[1] // 2, dim=1)
+            else:
+                h = x
+            xs.append(x)
+        return self.fc(jnp.sum(jnp.concatenate(xs, axis=1), axis=2))
+
+
+class FlaxConv1D(nn.Module):
+    """
+    reference : https://huggingface.co/transformers/v4.11.3/_modules/transformers/models/gpt2/modeling_flax_gpt2.html
+    """
+    features: int
+    use_bias: bool = True
+    dtype: Any = jnp.float32
+    precision: Any = None
+
+    @nn.compact
+    def __call__(self, inputs):
+        inputs = jnp.asarray(inputs, self.dtype)
+        kernel = self.param("kernel", jax.nn.initializers.normal(stddev=0.02), (self.features, inputs.shape[-1]))
+        kernel = jnp.asarray(kernel.transpose(), self.dtype)
+        y = lax.dot_general(inputs, kernel, (((inputs.ndim - 1,), (0,)), ((), ())), precision=self.precision)
+        if self.use_bias:
+            bias = self.param("bias", jax.nn.initializers.zeros, (self.features,))
+            bias = jnp.asarray(bias, self.dtype)
+            y = y + bias
+        return y

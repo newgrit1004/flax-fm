@@ -5,7 +5,7 @@ import numpy as np
 from typing import Sequence
 from flaxfm.utils import Sequential
 
-class FactorizationSupportedNeuralNetworkModelFlax(nn.Module):
+class NeuralFactorizationMachineModelFlax(nn.Module):
     """
     Note:
     You can only assign Module attributes to self inside Module.setup().

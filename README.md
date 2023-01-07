@@ -22,8 +22,44 @@ The code on this repository was converted from [a pytorch implementation of fact
 | Neural Collaborative Filtering | [X He, et al. Neural Collaborative Filtering, 2017.](https://arxiv.org/abs/1708.05031) |
 | Field-aware Neural Factorization Machine | [L Zhang, et al. Field-aware Neural Factorization Machine for Click-Through Rate Prediction, 2019.](https://arxiv.org/abs/1902.09096) |
 | DeepFM | [H Guo, et al. DeepFM: A Factorization-Machine based Neural Network for CTR Prediction, 2017.](https://arxiv.org/abs/1703.04247) |
+| xDeepFM | [J Lian, et al. xDeepFM: Combining Explicit and Implicit Feature Interactions for Recommender Systems, 2018.](https://arxiv.org/abs/1803.05170) |
 
 
+# 주피터 노트북 파일 설명
+
+- no_batch_norm_dropout_exists_training.ipynb
+    - batch_normalization 을 하지 않고, dropout을 해야하는 모델에 대해서 training할 때 사용하는 주피터 노트북입니다.
+    - 모델
+        - AttentionalFactorizationMachineModelFlax
+
+- batch_norm_dropout_exist_training.ipynb
+    - batch_normalization과 dropout을 포함한 모델에 대해서 training할 때 사용하는 주피터 노트북입니다.
+    - 모델
+        - WideAndDeepModelFlax
+        - FactorizationSupportedNeuralNetworkModelFlax
+        - NeuralFactorizationMachineModelFlax
+        - NeuralCollaborativeFilteringFlax
+        - FieldAwareNeuralFactorizationMachineModelFlax
+        - DeepFactorizationMachineModelFlax
+        - ExtremeDeepFactorizationMachineModelFlax
+
+
+- no_batch_norm_dropout_training.ipynb
+    - batch_normaliation과 dropout이 포함되지 않은 모델에 대해서 training할 때 사용하는 주피터 노트북입니다.
+    - 모델
+        - LogisticRegressionModelFlax
+        - FactorizationMachineModelFlax
+        - FieldAwareFactorizationMachineModelFlax
+
+
+- compare_pytorch_flax_train_speed.ipynb
+    - 동일한 데이터셋(MovieLens20MDataset)에 대해 pytorch로 구현한 FactorizationMachineModel과 Flax로 구현한 FactorizationMachineModel에 대해 각각 모델 트레이닝을 하고 트레이닝 속도 및 loss function 값의 수렴도를 비교한 주피터 노트북 파일입니다.
+
+
+# TODO
+- 모델별 특징과 상관없이 통일된 training 코드 작성
+- Inference 코드 작성
+- [scalene](https://github.com/plasma-umass/scalene)(a high-performance CPU, GPU and memory profiler for Python) 도입해서 프로파일링 해보기
 
 # Reference Code
 https://github.com/rixwew/pytorch-fm
