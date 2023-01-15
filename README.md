@@ -60,6 +60,7 @@ The code on this repository was converted from [a pytorch implementation of fact
 - 모델별 특징과 상관없이 통일된 training 코드 작성
 - Inference 코드 작성
 - [scalene](https://github.com/plasma-umass/scalene)(a high-performance CPU, GPU and memory profiler for Python) 도입해서 프로파일링 해보기
+- Dockerfile 설치 과정 효율화
 
 # Reference Code
 https://github.com/rixwew/pytorch-fm
