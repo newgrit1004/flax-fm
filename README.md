@@ -55,6 +55,9 @@ The code on this repository was converted from [a pytorch implementation of fact
 - compare_pytorch_flax_train_speed.ipynb
     - 동일한 데이터셋(MovieLens20MDataset)에 대해 pytorch로 구현한 FactorizationMachineModel과 Flax로 구현한 FactorizationMachineModel에 대해 각각 모델 트레이닝을 하고 트레이닝 속도 및 loss function 값의 수렴도를 비교한 주피터 노트북 파일입니다.
 
+- compare_pytorch_flax_model_architecture.ipynb
+    - 동일한 데이터셋(MovieLens20MDataset)에 대해 pytorch로 구현한 FactorizationMachineModel과 Flax로 구현한 FactorizationMachineModel를  각각 onnx 파일과 tflite 파일로 export하고,
+    [netron 라이브러리](https://github.com/lutzroeder/netron)를 이용하여 모델 구조를 시각화하여 비교해봅니다.
 
 # TODO
 - 모델별 특징과 상관없이 통일된 training 코드 작성
