@@ -59,11 +59,16 @@ The code on this repository was converted from [a pytorch implementation of fact
     - 동일한 데이터셋(MovieLens20MDataset)에 대해 pytorch로 구현한 FactorizationMachineModel과 Flax로 구현한 FactorizationMachineModel를  각각 onnx 파일과 tflite 파일로 export하고,
     [netron 라이브러리](https://github.com/lutzroeder/netron)를 이용하여 모델 구조를 시각화하여 비교해봅니다.
 
+# profile_results
+- [scalene](https://github.com/plasma-umass/scalene)(a high-performance CPU, GPU and memory profiler for Python)를 사용하여 모델에 대해 profiling한 결과들을 html파일 형태로 업로드하였습니다.
+- [htmlviewer](https://codebeautify.org/htmlviewer)을 통해 profile_results로 나온 결과를 볼 수 있습니다.
+
 # TODO
 - 모델별 특징과 상관없이 통일된 training 코드 작성
 - Inference 코드 작성
-- [scalene](https://github.com/plasma-umass/scalene)(a high-performance CPU, GPU and memory profiler for Python) 도입해서 프로파일링 해보기
+- html 파일을 더 쉽게 볼 수 있는 법에 대해 고민해보기
 - Dockerfile 설치 과정 효율화
+    - 현재는 설치해야하는 용량이 매우 크고 오래 걸리는 편
 
 # Reference Code
 https://github.com/rixwew/pytorch-fm
