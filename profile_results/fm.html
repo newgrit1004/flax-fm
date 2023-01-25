@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<style>
+.r1 {color: #005f00; text-decoration-color: #005f00}
+.r2 {font-weight: bold}
+.r3 {color: #000080; text-decoration-color: #000080; font-weight: bold}
+.r4 {color: #87af00; text-decoration-color: #87af00; font-weight: bold}
+.r5 {color: #005f00; text-decoration-color: #005f00; font-weight: bold}
+.r6 {color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold}
+.r7 {color: #000080; text-decoration-color: #000080; font-weight: bold; font-style: italic}
+.r8 {color: #87af00; text-decoration-color: #87af00; font-weight: bold; font-style: italic}
+.r9 {color: #005f00; text-decoration-color: #005f00; font-weight: bold; font-style: italic}
+.r10 {color: #7f7f7f; text-decoration-color: #7f7f7f}
+.r11 {color: #800000; text-decoration-color: #800000; font-weight: bold}
+.r12 {color: #000080; text-decoration-color: #000080}
+.r13 {color: #87af00; text-decoration-color: #87af00}
+.r14 {color: #008000; text-decoration-color: #008000; background-color: #f8f8f8; font-weight: bold}
+.r15 {color: #000000; text-decoration-color: #000000; background-color: #f8f8f8}
+.r16 {color: #0000ff; text-decoration-color: #0000ff; background-color: #f8f8f8; font-weight: bold}
+.r17 {background-color: #f8f8f8}
+.r18 {color: #666666; text-decoration-color: #666666; background-color: #f8f8f8}
+.r19 {color: #008000; text-decoration-color: #008000; background-color: #f8f8f8}
+.r20 {color: #0000ff; text-decoration-color: #0000ff; background-color: #f8f8f8}
+.r21 {color: #aa22ff; text-decoration-color: #aa22ff; background-color: #f8f8f8}
+.r22 {color: #0000ff; text-decoration-color: #0000ff}
+body {
+    color: #000000;
+    background-color: #ffffff;
+}
+</style>
+</head>
+<html>
+<body>
+    <code>
+        <pre style="font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">                                       Memory usage: <span class="r1">▄▅█</span> (max: 20.094 MB, growth rate: 100%)                                       
+                           /dist/flax-fm/flaxfm/model/fm.py: % of time =  99.77% (2.791s) out of 2.797s.                           
+       ╷       ╷       ╷      ╷       ╷       ╷       ╷               ╷       ╷                                                    
+ <span class="r2">      </span>│<span class="r3">Time</span><span class="r2">   </span>│<span class="r3">––––––</span><span class="r2"> </span>│<span class="r3">––––…</span><span class="r2"> </span>│<span class="r4">––––––</span><span class="r2"> </span>│<span class="r5">Memory</span><span class="r2"> </span>│<span class="r5">––––––</span><span class="r2"> </span>│<span class="r5">–––––––––––</span><span class="r2">    </span>│<span class="r4">Copy</span><span class="r2">   </span>│<span class="r2">                                                   </span> 
+ <span class="r2"> </span><span class="r6">Line</span><span class="r2"> </span>│<span class="r7">Python</span><span class="r2"> </span>│<span class="r7">native</span><span class="r2"> </span>│<span class="r7">syst…</span><span class="r2"> </span>│<span class="r8">GPU</span><span class="r2">    </span>│<span class="r9">Python</span><span class="r2"> </span>│<span class="r9">peak</span><span class="r2">   </span>│<span class="r9">timeline</span><span class="r5">/%</span><span class="r2">     </span>│<span class="r8">(MB/s)</span><span class="r2"> </span>│<span class="r2">/dist/flax-fm/flaxfm/model/fm.py                   </span> 
+╺━━━━━━┿━━━━━━━┿━━━━━━━┿━━━━━━┿━━━━━━━┿━━━━━━━┿━━━━━━━┿━━━━━━━━━━━━━━━┿━━━━━━━┿━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
+ <span class="r10">    1 </span>│<span class="r11">   31%</span><span class="r12"> </span>│<span class="r11">   65%</span><span class="r12"> </span>│<span class="r12">   4% </span>│<span class="r13">       </span>│<span class="r1">  99%  </span>│<span class="r1">   20M </span>│<span class="r11">▄█ 100%</span><span class="r1">        </span>│<span class="r13">   121 </span>│<span class="r14">from</span><span class="r15"> </span><span class="r16">flax</span><span class="r15"> </span><span class="r14">import</span><span class="r15"> linen </span><span class="r14">as</span><span class="r15"> nn</span><span class="r17">                      </span>  
+ <span class="r10">    2 </span>│<span class="r12">       </span>│<span class="r12">       </span>│<span class="r12">      </span>│<span class="r13">       </span>│<span class="r1">       </span>│<span class="r1">       </span>│<span class="r1">               </span>│<span class="r13">       </span>│<span class="r14">import</span><span class="r15"> </span><span class="r16">jax</span><span class="r17">                                        </span>  
+ <span class="r10">    3 </span>│<span class="r12">       </span>│<span class="r12">       </span>│<span class="r12">      </span>│<span class="r13">       </span>│<span class="r1">       </span>│<span class="r1">       </span>│<span class="r1">               </span>│<span class="r13">       </span>│<span class="r14">from</span><span class="r15"> </span><span class="r16">flaxfm.layer</span><span class="r15"> </span><span class="r14">import</span><span class="r15"> FeaturesLinearFlax, Featu</span>  
+ <span class="r10">    4 </span>│<span class="r12">       </span>│<span class="r12">       </span>│<span class="r12">      </span>│<span class="r13">       </span>│<span class="r1">       </span>│<span class="r1">       </span>│<span class="r1">               </span>│<span class="r13">       </span>│<span class="r14">import</span><span class="r15"> </span><span class="r16">numpy</span><span class="r15"> </span><span class="r14">as</span><span class="r15"> </span><span class="r16">np</span><span class="r17">                                </span>  
+ <span class="r10">    5 </span>│<span class="r12">       </span>│<span class="r12">       </span>│<span class="r12">      </span>│<span class="r13">       </span>│<span class="r1">       </span>│<span class="r1">       </span>│<span class="r1">               </span>│<span class="r13">       </span>│<span class="r17">                                                  </span>  
+ <span class="r10">    6 </span>│<span class="r12">       </span>│<span class="r12">       </span>│<span class="r12">      </span>│<span class="r13">       </span>│<span class="r1">       </span>│<span class="r1">       </span>│<span class="r1">               </span>│<span class="r13">       </span>│<span class="r14">class</span><span class="r15"> </span><span class="r16">FactorizationMachineModelFlax</span><span class="r15">(nn</span><span class="r18">.</span><span class="r15">Module):</span><span class="r17">   </span>  
+ <span class="r10">    7 </span>│<span class="r12">       </span>│<span class="r12">       </span>│<span class="r12">      </span>│<span class="r13">       </span>│<span class="r1">       </span>│<span class="r1">       </span>│<span class="r1">               </span>│<span class="r13">       </span>│<span class="r15">    field_dims : np</span><span class="r18">.</span><span class="r15">ndarray</span><span class="r17">                       </span>  
+ <span class="r10">    8 </span>│<span class="r12">       </span>│<span class="r12">       </span>│<span class="r12">      </span>│<span class="r13">       </span>│<span class="r1">       </span>│<span class="r1">       </span>│<span class="r1">               </span>│<span class="r13">       </span>│<span class="r15">    embed_dim : </span><span class="r19">int</span><span class="r17">                               </span>  
+ <span class="r10">    9 </span>│<span class="r12">       </span>│<span class="r12">       </span>│<span class="r12">      </span>│<span class="r13">       </span>│<span class="r1">       </span>│<span class="r1">       </span>│<span class="r1">               </span>│<span class="r13">       </span>│<span class="r17">                                                  </span>  
+ <span class="r10">   10 </span>│<span class="r12">       </span>│<span class="r12">       </span>│<span class="r12">      </span>│<span class="r13">       </span>│<span class="r1">       </span>│<span class="r1">       </span>│<span class="r1">               </span>│<span class="r13">       </span>│<span class="r15">    </span><span class="r14">def</span><span class="r15"> </span><span class="r20">setup</span><span class="r15">(</span><span class="r19">self</span><span class="r15">):</span><span class="r17">                              </span>  
+ <span class="r10">   11 </span>│<span class="r12">       </span>│<span class="r12">       </span>│<span class="r12">      </span>│<span class="r13">       </span>│<span class="r1">       </span>│<span class="r1">       </span>│<span class="r1">               </span>│<span class="r13">       </span>│<span class="r15">        </span><span class="r19">self</span><span class="r18">.</span><span class="r15">embedding </span><span class="r18">=</span><span class="r15"> FeaturesEmbeddingFlax(</span><span class="r19">sel</span>  
+ <span class="r10">   12 </span>│<span class="r12">       </span>│<span class="r12">       </span>│<span class="r12">      </span>│<span class="r13">       </span>│<span class="r1">       </span>│<span class="r1">       </span>│<span class="r1">               </span>│<span class="r13">       </span>│<span class="r15">        </span><span class="r19">self</span><span class="r18">.</span><span class="r15">linear </span><span class="r18">=</span><span class="r15"> FeaturesLinearFlax(</span><span class="r19">self</span><span class="r18">.</span><span class="r15">fiel</span>  
+ <span class="r10">   13 </span>│<span class="r12">       </span>│<span class="r12">       </span>│<span class="r12">      </span>│<span class="r13">       </span>│<span class="r1">       </span>│<span class="r1">       </span>│<span class="r1">               </span>│<span class="r13">       </span>│<span class="r15">        </span><span class="r19">self</span><span class="r18">.</span><span class="r15">fm </span><span class="r18">=</span><span class="r15"> FactorizationMachineFlax(reduce_</span>  
+ <span class="r10">   14 </span>│<span class="r12">       </span>│<span class="r12">       </span>│<span class="r12">      </span>│<span class="r13">       </span>│<span class="r1">       </span>│<span class="r1">       </span>│<span class="r1">               </span>│<span class="r13">       </span>│<span class="r15">    </span><span class="r21">@nn</span><span class="r18">.</span><span class="r15">compact</span><span class="r17">                                   </span>  
+ <span class="r10">   15 </span>│<span class="r12">       </span>│<span class="r12">       </span>│<span class="r12">      </span>│<span class="r13">       </span>│<span class="r1">       </span>│<span class="r1">       </span>│<span class="r1">               </span>│<span class="r13">       </span>│<span class="r15">    </span><span class="r14">def</span><span class="r15"> </span><span class="r20">__call__</span><span class="r15">(</span><span class="r19">self</span><span class="r15">, x):</span><span class="r17">                        </span>  
+ <span class="r10">   16 </span>│<span class="r12">       </span>│<span class="r12">       </span>│<span class="r12">      </span>│<span class="r13">       </span>│<span class="r1">       </span>│<span class="r1">       </span>│<span class="r1">               </span>│<span class="r13">       </span>│<span class="r15">        x </span><span class="r18">=</span><span class="r15"> </span><span class="r19">self</span><span class="r18">.</span><span class="r15">linear(x) </span><span class="r18">+</span><span class="r15"> </span><span class="r19">self</span><span class="r18">.</span><span class="r15">fm(</span><span class="r19">self</span><span class="r18">.</span><span class="r15">embeddin</span>  
+ <span class="r10">   17 </span>│<span class="r12">       </span>│<span class="r12">       </span>│<span class="r12">      </span>│<span class="r13">       </span>│<span class="r1">       </span>│<span class="r1">       </span>│<span class="r1">               </span>│<span class="r13">       </span>│<span class="r15">        </span><span class="r14">return</span><span class="r15"> jax</span><span class="r18">.</span><span class="r15">nn</span><span class="r18">.</span><span class="r15">sigmoid(x</span><span class="r18">.</span><span class="r15">squeeze(</span><span class="r18">1</span><span class="r15">))</span><span class="r17">       </span>  
+       ╵       ╵       ╵      ╵       ╵       ╵       ╵               ╵       ╵                                                    
+Top PEAK memory consumption, by line:
+<span class="r1">(1)     1:    20 MB</span>                                                                                                                 
+generated by the <a class="r22" href="https://github.com/plasma-umass/scalene">scalene</a> profiler                                                                                                   
+</pre>
+    </code>
+</body>
+</html>
