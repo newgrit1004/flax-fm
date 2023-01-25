@@ -1,6 +1,9 @@
 
 # Custom
 #*.ipynb
+*.tflite
+*.onnx
+ckpts/
 
 
 # Byte-compiled / optimized / DLL files
